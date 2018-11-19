@@ -54,3 +54,35 @@ var now = new Date();
 var counter=separate_time(now);
 document.getElelmentById('countdown').textContent=counter[5]+'年'+counter[4]+'月'+counter[3]+'日'+counter[2]+'時'+counter[1]+'分'+counter[0]+'秒';
 
+
+//new
+var separate_time=function(time){
+var sec =Math.foor((time/1000)%60);
+  var min =Math.foor((time/1000/60)%60);
+   var hours =Math.foor((time/1000/60/60)%24);
+   var days =Math.foor(time/1000/60/60/24);
+  return[sec,min,hours,days];
+}
+
+var update=function(){
+var now=new Date();
+var target=new Date(2020,7,24,0,0,0,0);
+var diff= target.getTime()-now.getTime();
+var counter=separate_time(diff);
+document.getElementById('countdown').textContent='あと'+counter[3]+'日'counter[2]+'hour+'+counter[1]+'minute'+counter[0]+'second';
+  refresh();//タイマー起動
+}
+
+var reresh=function()
+{
+setTImeout(update,1000);
+
+}
+update();
+
+
+
+
+
+
+
